@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { PORTFOLIO } from "@/data/portfolio";
 import { useScrollReveal } from "@/hooks/useScrollProgress";
 import type { Project } from "@/data/portfolio";

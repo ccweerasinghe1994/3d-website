@@ -28,7 +28,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body>{children}</body>
+      <body>{children}{/* impeccable-live-start */}
+{/* eslint-disable-next-line @next/next/no-sync-scripts */}
+<script src="http://localhost:8400/live.js?token=c6b062e3-9dc5-4faa-ae00-7f46b4a40d9b"></script>
+{/* impeccable-live-end */}
+</body>
     </html>
   );
 }

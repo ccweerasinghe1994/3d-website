@@ -46,7 +46,7 @@ function HeroContent() {
       <div className="hero__canvas-wrap" aria-hidden="true">
         <Canvas
           dpr={[1, 2]}
-          camera={{ position: [0, 0, 6], fov: 50 }}
+          camera={{ position: [0, 0, 4.5], fov: 40 }}
           gl={{ antialias: true, alpha: true }}
         >
           <Suspense fallback={null}>

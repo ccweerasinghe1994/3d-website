@@ -11,7 +11,6 @@ const WIRE_STATS = { tris: "14.2K", verts: "8.8K" };
 export default function PassSwitcher() {
   const activePass         = usePassStore((s) => s.activePass);
   const setPass            = usePassStore((s) => s.setPass);
-  const passTransitioning  = usePassStore((s) => s.passTransitioning);
   const setPassTransitioning = usePassStore((s) => s.setPassTransitioning);
   const loadPhase          = usePassStore((s) => s.loadPhase);
 

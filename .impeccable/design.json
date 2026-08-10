@@ -1,0 +1,226 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-10T13:25:00Z",
+  "title": "Design System: Render Passes Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "void": {
+        "role": "neutral",
+        "displayName": "Indigo Void",
+        "canonical": "#0C0B16",
+        "tonalRamp": ["#0C0B16", "#13111F", "#1A1828", "#211F32", "#2E2B44", "#3D3960", "#5550A0", "#8C8CF5"]
+      },
+      "slate": {
+        "role": "neutral",
+        "displayName": "Graphite Surface",
+        "canonical": "#232036",
+        "tonalRamp": ["#0F0E1C", "#171529", "#1D1B32", "#232036", "#2E2B44", "#3D3960", "#5550A0", "#8C8CF5"]
+      },
+      "normal": {
+        "role": "primary",
+        "displayName": "Periwinkle Normal",
+        "canonical": "#8C8CF5",
+        "tonalRamp": ["#1A1A4A", "#25256B", "#333394", "#4444B8", "#5858D4", "#7070EC", "#8C8CF5", "#B8B8FA"]
+      },
+      "bone": {
+        "role": "neutral",
+        "displayName": "Warm Bone",
+        "canonical": "#E6E2D9",
+        "tonalRamp": ["#2A2820", "#3D3B31", "#504D43", "#645F54", "#807969", "#A8A090", "#C8C0AD", "#E6E2D9"]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Instrument Muted",
+        "canonical": "#6E6A85",
+        "tonalRamp": ["#16152A", "#21203A", "#2D2B4A", "#3A3860", "#4D4A7A", "#5E5B90", "#6E6A85", "#A0A0BC"]
+      },
+      "depth": {
+        "role": "secondary",
+        "displayName": "Calibration Mint",
+        "canonical": "#5BE0C8",
+        "tonalRamp": ["#0A3A33", "#0F5247", "#14705E", "#1A8F77", "#22B090", "#38CAAC", "#5BE0C8", "#9DF0E0"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display — Anybody Wide",
+        "purpose": "Hero name only. One per page. Width axis pushed to 115–125 for maximum presence."
+      },
+      "headline": {
+        "displayName": "Headline — Anybody Standard",
+        "purpose": "Section titles. Width 110, tight tracking."
+      },
+      "title": {
+        "displayName": "Title — Anybody Condensed",
+        "purpose": "Work row titles, subheadings, footer headline. Width 105."
+      },
+      "body": {
+        "displayName": "Body — Archivo",
+        "purpose": "Case study prose, bio, capability descriptions. Max 65ch."
+      },
+      "label": {
+        "displayName": "Label — Geist Mono",
+        "purpose": "All data, metadata, stack chips, telemetry, timestamps, pass labels. Uppercase only."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Entrances: hero word reveal, preloader fade-in. Feels spring-like without a physics library."
+      },
+      {
+        "name": "ease-out-quart",
+        "value": "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        "purpose": "Scroll reveals, section title entrances, hover backgrounds. Standard deceleration."
+      },
+      {
+        "name": "ease-in-expo",
+        "value": "cubic-bezier(0.55, 0, 1, 0.45)",
+        "purpose": "Exits: preloader dissolve, pass transitions out. Accelerates into invisibility."
+      },
+      {
+        "name": "ease-in-out",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Pass button color transitions, hover state changes. Standard balanced easing."
+      }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "375px" },
+      { "name": "tablet", "value": "768px" },
+      { "name": "desktop", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Pass Button — Inactive",
+      "kind": "button",
+      "refersTo": "pass-btn",
+      "description": "One of five render-pass selector buttons in the hero's pass switcher. Inactive state.",
+      "html": "<button class=\"ds-pass-btn\" role=\"tab\" aria-selected=\"false\">ALBEDO</button>",
+      "css": ".ds-pass-btn { background: none; border: none; cursor: pointer; font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted, #6E6A85); padding: 0 0 3px 0; position: relative; transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1); line-height: 1; } .ds-pass-btn:hover { color: var(--bone, #E6E2D9); } .ds-pass-btn:focus-visible { outline: 2px solid var(--normal, #8C8CF5); outline-offset: 2px; }"
+    },
+    {
+      "name": "Pass Button — Active",
+      "kind": "button",
+      "refersTo": "pass-btn-active",
+      "description": "Active render-pass selector. The 1px depth-mint underline is the system's live-state signal.",
+      "html": "<button class=\"ds-pass-btn-active\" role=\"tab\" aria-selected=\"true\">BEAUTY</button>",
+      "css": ".ds-pass-btn-active { background: none; border: none; cursor: pointer; font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--depth, #5BE0C8); padding: 0 0 3px 0; position: relative; line-height: 1; } .ds-pass-btn-active::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--depth, #5BE0C8); } .ds-pass-btn-active:focus-visible { outline: 2px solid var(--normal, #8C8CF5); outline-offset: 2px; }"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Stack label chip. Informational only — no hover, no click. Used for technology labels in work rows, case study headers, about section.",
+      "html": "<span class=\"ds-chip\">TypeScript</span>",
+      "css": ".ds-chip { display: inline-block; padding: 2px 6px; border: 1px solid var(--slate, #232036); color: var(--muted, #6E6A85); font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.10em; text-transform: uppercase; border-radius: 0; line-height: 1.4; }"
+    },
+    {
+      "name": "Work Row",
+      "kind": "nav",
+      "refersTo": "work-row",
+      "description": "Case study list item. Hairline-ruled, grid-based. Hover reveals a tint background and right-sliding caret.",
+      "html": "<li class=\"ds-work-row\"><a class=\"ds-work-row-link\" href=\"#\"><span class=\"ds-work-idx\">01</span><span class=\"ds-work-title\">NebulaFlow</span><span class=\"ds-work-outcome\">1.2M visitors in launch week.</span><span class=\"ds-work-year\">2026</span><span class=\"ds-work-caret\">→</span></a></li>",
+      "css": ".ds-work-row { border-bottom: 1px solid var(--slate, #232036); position: relative; } .ds-work-row-link { display: grid; grid-template-columns: 3rem 1fr 1fr 4rem 1.5rem; align-items: center; gap: 1.5rem; padding: 1.5rem 2rem; text-decoration: none; transition: background 0.2s; } .ds-work-row-link:hover { background: color-mix(in oklab, #232036 60%, transparent); } .ds-work-idx { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: var(--muted, #6E6A85); text-transform: uppercase; } .ds-work-title { font-family: 'Anybody', sans-serif; font-size: clamp(1.1rem, 2vw, 1.5rem); font-variation-settings: 'wdth' 105, 'wght' 600; letter-spacing: -0.02em; color: var(--bone, #E6E2D9); } .ds-work-outcome { font-size: 0.875rem; color: var(--muted, #6E6A85); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .ds-work-year { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: var(--muted, #6E6A85); text-align: right; text-transform: uppercase; } .ds-work-caret { color: var(--normal, #8C8CF5); opacity: 0; transform: translateX(-6px); transition: opacity 0.2s, transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); font-size: 1rem; } .ds-work-row-link:hover .ds-work-caret { opacity: 1; transform: translateX(0); } .ds-work-row-link:focus-visible { outline: 2px solid var(--normal, #8C8CF5); outline-offset: 2px; }"
+    },
+    {
+      "name": "Performance Metric",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Before/after metric display in the case study performance panel. Struck-through before value in muted; after value in depth mint.",
+      "html": "<div class=\"ds-perf-metric\"><span class=\"ds-perf-label\">DRAW CALLS</span><div class=\"ds-perf-values\"><span class=\"ds-perf-before\">480</span><span class=\"ds-perf-after\">4</span></div></div>",
+      "css": ".ds-perf-metric { display: flex; flex-direction: column; gap: 4px; padding-bottom: 1.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--slate, #232036); } .ds-perf-label { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.10em; text-transform: uppercase; color: var(--muted, #6E6A85); } .ds-perf-values { display: flex; align-items: baseline; gap: 0.75rem; } .ds-perf-before { font-family: 'Geist Mono', monospace; font-size: 0.875rem; color: var(--muted, #6E6A85); text-decoration: line-through; } .ds-perf-after { font-family: 'Geist Mono', monospace; font-size: 1.25rem; color: var(--depth, #5BE0C8); font-weight: 600; }"
+    },
+    {
+      "name": "Section Header",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "The labeled section opener used before Work, About, and Footer sections. Pass label above section title.",
+      "html": "<div class=\"ds-section-header\"><span class=\"ds-section-pass\">— ALBEDO</span><h2 class=\"ds-section-title\">Work</h2></div>",
+      "css": ".ds-section-header { padding: 4rem 2rem 2rem; border-bottom: 1px solid var(--slate, #232036); max-width: 1280px; margin: 0 auto; } .ds-section-pass { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--normal, #8C8CF5); display: block; margin-bottom: 1rem; } .ds-section-title { font-family: 'Anybody', sans-serif; font-size: clamp(2rem, 4vw, 3.5rem); font-variation-settings: 'wdth' 110, 'wght' 700; letter-spacing: -0.03em; line-height: 0.95; color: var(--bone, #E6E2D9); }"
+    },
+    {
+      "name": "Preloader Readout",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "The mono progress readout shown during scene assembly. Label · separator · MB value (in depth mint).",
+      "html": "<div class=\"ds-preloader-readout\"><span class=\"ds-preloader-label\">DECODING GEOMETRY</span><span class=\"ds-preloader-sep\">·</span><span class=\"ds-preloader-mb\">4.2 / 11.8 MB</span></div>",
+      "css": ".ds-preloader-readout { display: flex; align-items: center; gap: 0.75rem; font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.10em; text-transform: uppercase; } .ds-preloader-label { color: var(--bone, #E6E2D9); } .ds-preloader-sep { color: var(--muted, #6E6A85); } .ds-preloader-mb { color: var(--depth, #5BE0C8); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Calibrated Instrument",
+    "overview": "This is a design system that looks like the inside of a well-tuned renderer — every element is precisely placed, purposeful, and technically legible. The visual world borrows its vocabulary from GPU debugging tools and render-pass inspection views: the deep indigo void of a cleared framebuffer, the periwinkle of world-space normal encoding, the mint pulse of an active draw call. Nothing is decorative; every color token, every hairline rule, and every mono label either carries information or gets out of the way.\n\nThe interface recedes to let the work advance. The 3D scene is the dominant visual object; the surrounding UI is instruments and readouts, not a frame. This calibration is reflected in the density strategy: the only dense layer is the mono label layer — data, stack chips, telemetry, timestamps — while the layout itself breathes generously. The visual richness lives in the geometry, not the chrome.\n\nThe system has a single kinetic element: the variable-font width axis on Anybody. At rest, wide (wdth 110–120). Under scrutiny, it could compress. This creates motion without animation, variation without noise.",
+    "keyCharacteristics": [
+      "Deep indigo-black ground that reads as a void, never as a background",
+      "Periwinkle (--normal) operating at large scale — the scene's own color, imported into the UI as a mid-tone",
+      "Mint (--depth) appearing at most twice per screen as a live-indicator — its rarity is its meaning",
+      "0px border-radius throughout — every edge is a decision boundary",
+      "1px hairlines in --slate as the only structural divider; no shadows, no fills",
+      "Uppercase Geist Mono at 10–11px for all data, labels, and metadata",
+      "Anybody variable font driving all display and heading type, with the width axis as the system's kinetic variable"
+    ],
+    "rules": [
+      {
+        "name": "The Depth Rule",
+        "body": "--depth mint (#5BE0C8) appears at most twice per screen. If a design revision adds a third instance, one must be removed. Its meaning — 'active,' 'live,' 'current' — depends entirely on its rarity.",
+        "section": "colors"
+      },
+      {
+        "name": "The No-Gradients Rule",
+        "body": "No color gradients except the single radial falloff behind the 3D scene. That gradient is structural — it ties the scene to the page. All others are forbidden.",
+        "section": "colors"
+      },
+      {
+        "name": "The Six-Token Rule",
+        "body": "Every color value on every screen must resolve to one of the six tokens. No inline hex, no one-off tints, no opacity hacks to create a seventh color.",
+        "section": "colors"
+      },
+      {
+        "name": "The Width-as-Motion Rule",
+        "body": "The wdth axis on Anybody is the system's only kinetic variable at rest. It does not animate — it is set deliberately per context. Wide (115–125) for hero confidence; medium (105–110) for section authority; narrow (75–85) for mobile reflow.",
+        "section": "typography"
+      },
+      {
+        "name": "The Mono-Only-for-Data Rule",
+        "body": "Geist Mono is used exclusively for labels, data, metadata, and telemetry. It never appears in prose, headings, or navigation. When a visitor sees mono type, they know it carries a fact.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Every surface is flush with the void. Nothing lifts. The only object with visual elevation is the 3D scene, and it earns that position through lighting, not CSS.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Hairline-as-Structure Rule",
+        "body": "The 1px hairline in --slate is the system's only structural element. It replaces all borders, all cards, all dividers. Adding a second stroke weight, a dashed variant, or any shadow is a violation.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Zero-Radius Rule",
+        "body": "No border-radius on any UI element. If a component in a new screen has rounded corners by default, reset it explicitly.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do use color-mix(in oklab, ...) for all tints and blends — it stays within the six-token palette without adding new hex values.",
+      "Do set Anybody's font-variation-settings explicitly on every display and headline element. Never rely on the default weight axis alone.",
+      "Do use --depth mint exclusively for: active pass button, preloader phase and MB readout, wire stats, footer availability status.",
+      "Do use --normal periwinkle as a structural mid-tone — for section markers, capability dashes, active carets, case study subheadings.",
+      "Do write all Geist Mono labels in uppercase with letter-spacing: 0.12em minimum.",
+      "Do provide a prefers-reduced-motion variant for every animation."
+    ],
+    "donts": [
+      "Don't use --depth mint more than twice on any single screen.",
+      "Don't add border-radius to any element. Not 2px, not 4px, not 50% for avatars.",
+      "Don't use box-shadow, text-shadow, filter: drop-shadow, or backdrop-filter.",
+      "Don't introduce a seventh color. Use color-mix(in oklab, [token] [%], transparent) instead.",
+      "Don't use Anybody or Archivo for data labels, telemetry, timestamps, or stack chips.",
+      "Don't use gradients except the single radial falloff behind the hero scene.",
+      "Don't center hero type. The lower-left anchor is not negotiable.",
+      "Don't use the word 'passionate,' 'crafting,' or 'digital experiences' anywhere in copy."
+    ]
+  }
+}

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PORTFOLIO } from "@/data/portfolio";
 import type { Metadata } from "next";
@@ -30,9 +31,9 @@ export default async function CaseStudyPage({ params }: Props) {
     <div style={{ background: "var(--void)", minHeight: "100vh" }}>
       <article className="case-study">
         {/* Back link */}
-        <a href="/#work" className="case-study__back mono">
+        <Link href="/#work" className="case-study__back mono">
           ← BACK TO WORK
-        </a>
+        </Link>
 
         {/* Header */}
         <header className="case-study__header">

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function NotFound() {
   return (
     <div
@@ -34,7 +36,7 @@ export default function NotFound() {
       >
         Not found
       </h1>
-      <a
+      <Link
         href="/"
         style={{
           fontFamily: "var(--font-mono, monospace)",
@@ -45,7 +47,7 @@ export default function NotFound() {
         }}
       >
         ← RETURN HOME
-      </a>
+      </Link>
     </div>
   );
 }
