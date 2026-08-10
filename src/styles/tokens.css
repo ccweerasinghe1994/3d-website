@@ -1,0 +1,54 @@
+/* ─── DESIGN TOKENS ────────────────────────────────────────────────────────
+   Derive EVERY color from these six tokens. No inline color values.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Anybody:ital,wdth,wght@0,75..125,100..900;1,75..125,100..900&family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Geist+Mono:wght@100..900&display=swap');
+
+:root {
+  /* Color palette */
+  --void:   #0C0B16;   /* Page background — deep indigo-black             */
+  --slate:  #232036;   /* Surfaces, cards, 1px hairline rules              */
+  --normal: #8C8CF5;   /* Dominant mid-tone — periwinkle                   */
+  --bone:   #E6E2D9;   /* Primary text and UI                              */
+  --muted:  #6E6A85;   /* Secondary text, metadata, inactive states        */
+  --depth:  #5BE0C8;   /* Cool mint — active state only, max 2× per screen */
+
+  /* Typography families */
+  --font-display: 'Anybody', 'Space Grotesk', sans-serif;
+  --font-body:    'Archivo', 'Public Sans', sans-serif;
+  --font-mono:    'Geist Mono', 'IBM Plex Mono', monospace;
+
+  /* Type scale */
+  --text-hero:     clamp(3.5rem, 8vw, 7rem);
+  --text-section:  clamp(2rem,   4vw, 3.5rem);
+  --text-heading:  clamp(1.25rem, 2vw, 1.75rem);
+  --text-body:     1rem;
+  --text-meta:     0.6875rem;  /* 11px */
+  --text-micro:    0.625rem;   /* 10px */
+
+  /* Spacing rhythm */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* Layout */
+  --max-w:       1280px;
+  --page-gutter: clamp(1.5rem, 5vw, 5rem);
+  --hairline:    1px solid var(--slate);
+
+  /* Motion — custom cubic-beziers */
+  --ease-out-expo:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart:  cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-in-expo:    cubic-bezier(0.55, 0, 1, 0.45);
+  --ease-in-out:     cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Focus ring — 2px --normal, offset 2px */
+  --focus-ring: 0 0 0 2px var(--void), 0 0 0 4px var(--normal);
+}
