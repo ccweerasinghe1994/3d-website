@@ -52,8 +52,6 @@ function PassMesh({
 }: PassMeshProps) {
   const meshRef = useRef<THREE.Mesh>(null);
   const wireRef = useRef<THREE.Mesh>(null);
-  const timeRef = useRef(0);
-
   const solidMaterial = useMemo(
     () =>
       new THREE.ShaderMaterial({
@@ -85,13 +83,13 @@ function PassMesh({
     []
   );
 
-  useFrame((_, delta) => {
-    timeRef.current += delta;
+  useFrame((state) => {
+    const t = state.clock.elapsedTime;
     if (meshRef.current) {
-      meshRef.current.rotation.x += rotationSpeed[0];
-      meshRef.current.rotation.y += rotationSpeed[1];
-      meshRef.current.rotation.z += rotationSpeed[2];
-      (meshRef.current.material as THREE.ShaderMaterial).uniforms.uTime.value = timeRef.current;
+      meshRef.current.rotation.x = rotationSpeed[0] * t * 60;
+      meshRef.current.rotation.y = rotationSpeed[1] * t * 60;
+      meshRef.current.rotation.z = rotationSpeed[2] * t * 60;
+      (meshRef.current.material as THREE.ShaderMaterial).uniforms.uTime.value = t;
     }
     if (wireRef.current) {
       wireRef.current.rotation.copy(meshRef.current!.rotation);
@@ -124,6 +122,23 @@ function PassMesh({
   );
 }
 
+// Subtle camera drift — disabled in prefers-reduced-motion
+function CameraRig() {
+  const reduce = typeof window !== "undefined"
+    ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    : false;
+
+  useFrame((state) => {
+    if (reduce) return;
+    const t = state.clock.elapsedTime;
+    state.camera.position.x = Math.sin(t * 0.08) * 0.4;
+    state.camera.position.y = Math.cos(t * 0.06) * 0.25;
+    state.camera.lookAt(0.3, 0, 0);
+  });
+
+  return null;
+}
+
 export default function HeroScene() {
   const activePass = usePassStore((s) => s.activePass);
   const loadPhase  = usePassStore((s) => s.loadPhase);
@@ -146,7 +161,8 @@ export default function HeroScene() {
       <directionalLight position={[5, 8, 5]} intensity={1.2} color="#e6e2d9" />
       <pointLight position={[-4, -2, 3]} intensity={0.6} color="#8c8cf5" />
 
-      {/* Main hero object — icosahedron */}
+      {/* Subtle camera drift */}
+      <CameraRig />
       <PassMesh
         geometry={icosa}
         pass={effectivePass}
