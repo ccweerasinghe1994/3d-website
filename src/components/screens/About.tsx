@@ -9,7 +9,7 @@ export default function About() {
   return (
     <section className="about" id="about" aria-labelledby="about-heading">
       <div className="section-header">
-        <span className="section-pass mono">— NORMAL</span>
+        <span className="section-pass mono">[ NORMAL ]</span>
         <h2
           id="about-heading"
           ref={ref as React.RefObject<HTMLHeadingElement>}
@@ -78,7 +78,7 @@ export default function About() {
             <ul role="list" className="about__cap-list">
               {PORTFOLIO.capabilities.map((cap, i) => (
                 <li key={i} className="about__cap-item">
-                  <span className="about__cap-dash" aria-hidden="true">—</span>
+                  <span className="about__cap-dash" aria-hidden="true">+</span>
                   {cap}
                 </li>
               ))}
@@ -90,7 +90,7 @@ export default function About() {
             <span className="mono muted about__cap-label">STACK</span>
             <div className="about__stack-chips">
               {PORTFOLIO.stack.map((s) => (
-                <span key={s} className="chip chip--lg mono">{s}</span>
+                <span key={s} className="chip chip--lg">{s}</span>
               ))}
             </div>
           </div>

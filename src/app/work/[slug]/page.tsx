@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = PORTFOLIO.projects.find((p) => p.slug === slug);
   if (!project) return { title: "Not found" };
   return {
-    title: `${project.title} — ${PORTFOLIO.name}`,
+    title: `${project.title} | ${PORTFOLIO.name}`,
     description: project.outcome,
   };
 }
@@ -50,25 +50,25 @@ export default async function CaseStudyPage({ params }: Props) {
         {/* Body — prose + performance panel */}
         <div className="case-study__body">
           <div className="case-study__prose">
-            <section aria-labelledby="problem-heading">
-              <h3 id="problem-heading">— PROBLEM</h3>
-              <p>{project.problem}</p>
-            </section>
-
-            <section aria-labelledby="approach-heading">
-              <h3 id="approach-heading">— APPROACH</h3>
-              <p>{project.approach}</p>
-            </section>
-
-            <section aria-labelledby="hard-heading">
-              <h3 id="hard-heading">— THE HARD PART</h3>
-              <p>{project.hardPart}</p>
-            </section>
-
-            <section aria-labelledby="outcome-heading">
-              <h3 id="outcome-heading">— OUTCOME</h3>
-              <p>{project.outcome_long}</p>
-            </section>
+            <div className="case-study__section">
+              <h3 id="problem-heading">[ PROBLEM ]</h3>
+              <p aria-labelledby="problem-heading">{project.problem}</p>
+            </div>
+            
+            <div className="case-study__section">
+              <h3 id="approach-heading">[ APPROACH ]</h3>
+              <p aria-labelledby="approach-heading">{project.approach}</p>
+            </div>
+            
+            <div className="case-study__section">
+              <h3 id="hard-heading">[ THE HARD PART ]</h3>
+              <p aria-labelledby="hard-heading">{project.hardPart}</p>
+            </div>
+            
+            <div className="case-study__section">
+              <h3 id="outcome-heading">[ OUTCOME ]</h3>
+              <p aria-labelledby="outcome-heading">{project.outcome_long}</p>
+            </div>
 
             {/* Links */}
             <div style={{ display: "flex", gap: "2rem", marginTop: "3rem" }}>

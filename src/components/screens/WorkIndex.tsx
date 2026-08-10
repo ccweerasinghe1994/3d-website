@@ -26,7 +26,7 @@ function WorkRow({ project, index }: WorkRowProps) {
         id={`work-row-${project.slug}`}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        aria-label={`${project.title} — ${project.outcome}`}
+        aria-label={`${project.title}: ${project.outcome}`}
       >
         {/* Index number */}
         <span className="work-row__idx mono muted">
@@ -42,7 +42,7 @@ function WorkRow({ project, index }: WorkRowProps) {
         {/* Stack chips */}
         <span className="work-row__stack">
           {project.stack.map((s) => (
-            <span key={s} className="chip mono">{s}</span>
+            <span key={s} className="chip">{s}</span>
           ))}
         </span>
 
@@ -80,7 +80,7 @@ export default function WorkIndex() {
       aria-labelledby="work-heading"
     >
       <div className="section-header">
-        <span className="section-pass mono">— ALBEDO</span>
+        <span className="section-pass mono">[ ALBEDO ]</span>
         <h2
           id="work-heading"
           ref={ref as React.RefObject<HTMLHeadingElement>}

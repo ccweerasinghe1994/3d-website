@@ -93,7 +93,7 @@ export const PORTFOLIO = {
         "Real-time fluid simulation rendered as a product configurator for a cosmetics brand. Conversion rate up 34% vs static imagery.",
       stack: ["R3F", "GLSL", "Three.js", "Next.js"],
       hardPart:
-        "A convincing liquid surface needed accurate refraction, caustics, and subsurface scattering — all in a single draw call to keep frame time under 16ms. The caustic pattern is computed analytically in the fragment shader from the surface normal field rather than sampled from a texture.",
+        "A convincing liquid surface needed accurate refraction, caustics, and subsurface scattering, all in a single draw call to keep frame time under 16ms. The caustic pattern is computed analytically in the fragment shader from the surface normal field rather than sampled from a texture.",
       problem:
         "Client's product imagery was static PNGs. The brief was to let users pour virtual liquid into the bottle and see it settle in real time.",
       approach:
